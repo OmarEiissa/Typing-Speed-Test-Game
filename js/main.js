@@ -32,20 +32,8 @@ const words = [
   "playing",
 ];
 
-// Setting Levels
-const lvlS = {
-  Easy: 10,
-  Normal: 5,
-  Hard: 3,
-};
-
-// Default Level
-let defaultLevelName = "Normal"; // Change Level From Here
-let defaultLevelSeconds = lvlS[defaultLevelName];
-
 // Catch Selectors
 let startButton = document.querySelector(".start");
-let lvlNameSpan = document.querySelector(".message .lvl");
 let secondsSpan = document.querySelector(".message .seconds");
 let theWord = document.querySelector(".the-word");
 let upcomingWords = document.querySelector(".upcoming-word");
@@ -54,9 +42,28 @@ let timeLeftSpan = document.querySelector(".time span");
 let scoreGot = document.querySelector(".score .got");
 let scoreTotal = document.querySelector(".score .total");
 let finishMessage = document.querySelector(".finish-message");
+let levelSelect = document.querySelector(".lvl");
 
-// Setting Level Name + Seconds + Score
-lvlNameSpan.innerHTML = defaultLevelName;
+// Setting Levels
+const lvlS = {
+  Easy: 10,
+  Normal: 5,
+  Hard: 3,
+};
+
+// Default Level
+let defaultLevelName = levelSelect.value;
+let defaultLevelSeconds = lvlS[defaultLevelName];
+
+// Update the default level when the user changes the level
+levelSelect.addEventListener("change", function () {
+  defaultLevelName = this.value;
+  defaultLevelSeconds = lvlS[defaultLevelName];
+  secondsSpan.innerHTML = defaultLevelSeconds;
+  timeLeftSpan.innerHTML = defaultLevelSeconds;
+});
+
+// Setting Level Name + Seconds + Score (Initial Setup)
 secondsSpan.innerHTML = defaultLevelSeconds;
 timeLeftSpan.innerHTML = defaultLevelSeconds;
 scoreTotal.innerHTML = words.length;
@@ -68,6 +75,12 @@ input.onpaste = function () {
 
 // Start Game
 startButton.onclick = function () {
+  // Update level based on selected value
+  defaultLevelName = levelSelect.value;
+  defaultLevelSeconds = lvlS[defaultLevelName];
+  secondsSpan.innerHTML = defaultLevelSeconds;
+  timeLeftSpan.innerHTML = defaultLevelSeconds;
+
   this.remove();
   input.focus();
   // Generate Word Function

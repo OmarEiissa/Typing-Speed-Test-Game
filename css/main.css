@@ -43,6 +43,30 @@ body {
 .message span::after {
   content: " ]";
 }
+.message .lvl {
+  color: var(--secondary-color);
+  font-weight: bold;
+  border: none;
+  padding: 2px;
+  border-radius: 5px;
+  text-align: center;
+  outline: none;
+  transition: 0.3s ease;
+}
+.lvl:hover {
+  background-color: var(--secondary-color);
+  color: white;
+  cursor: pointer;
+}
+.lvl:focus {
+  color: #fff;
+  background-color: var(--secondary-color);
+}
+.lvl option {
+  background-color: #fff;
+  color: var(--secondary-color);
+  font-weight: bold;
+}
 .start {
   font-size: 20px;
   font-weight: bold;
