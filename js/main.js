@@ -61,6 +61,9 @@ levelSelect.addEventListener("change", function () {
   defaultLevelSeconds = lvlS[defaultLevelName];
   secondsSpan.innerHTML = defaultLevelSeconds;
   timeLeftSpan.innerHTML = defaultLevelSeconds;
+
+  // Store level in localStorage
+  localStorage.setItem('selectedLevel', defaultLevelName);
 });
 
 // Setting Level Name + Seconds + Score (Initial Setup)
@@ -148,3 +151,14 @@ function startPlay() {
     }
   }, 1000);
 }
+
+window.onload = function () {
+  let savedLevel = localStorage.getItem('selectedLevel');
+  if (savedLevel) {
+    defaultLevelName = savedLevel;
+    defaultLevelSeconds = lvlS[defaultLevelName];
+    levelSelect.value = savedLevel;
+    secondsSpan.innerHTML = defaultLevelSeconds;
+    timeLeftSpan.innerHTML = defaultLevelSeconds;
+  }
+};
