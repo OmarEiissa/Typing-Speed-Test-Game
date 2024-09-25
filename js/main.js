@@ -11,7 +11,7 @@ const words = [
   "linkedin",
   "Twitter",
   "Github",
-  "Leetode",
+  "LeeCode",
   "Internet",
   "Python",
   "Scala",
@@ -34,9 +34,9 @@ const words = [
 
 // Setting Levels
 const lvlS = {
-  Easy: 5,
-  Normal: 3,
-  Hard: 2,
+  Easy: 10,
+  Normal: 5,
+  Hard: 3,
 };
 
 // Default Level
@@ -53,7 +53,7 @@ let input = document.querySelector(".input");
 let timeLeftSpan = document.querySelector(".time span");
 let scoreGot = document.querySelector(".score .got");
 let scoreTotal = document.querySelector(".score .total");
-let finishMessage = document.querySelector(".finish");
+let finishMessage = document.querySelector(".finish-message");
 
 // Setting Level Name + Seconds + Score
 lvlNameSpan.innerHTML = defaultLevelName;
@@ -123,7 +123,7 @@ function startPlay() {
           span.appendChild(spanText);
           finishMessage.appendChild(span);
           // Remove Upcoming Word Box
-          upcomingWords.remove()
+          upcomingWords.remove();
         }
       } else {
         let span = document.createElement("span");

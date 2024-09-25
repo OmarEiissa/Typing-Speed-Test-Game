@@ -1,5 +1,6 @@
 :root {
-  --main-color: #2196f3
+  --main-color: #2196f3;
+  --secondary-color: #009688;
 }
 * {
   box-sizing: border-box;
@@ -7,7 +8,7 @@
   padding: 0;
 }
 body {
-  font-family: sans-serif;
+  font-family: "OpenSans", sans-serif;
 }
 .game {
   background-color: #eee;
@@ -34,7 +35,7 @@ body {
 }
 .message span {
   font-weight: bold;
-  color: #009688;
+  color: var(--secondary-color);
 }
 .message span::before {
   content: "[ ";
@@ -46,7 +47,7 @@ body {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  background-color: #009688;
+  background-color: var(--secondary-color);
   color: #fff;
   padding: 20px;
   cursor: pointer;
@@ -70,8 +71,6 @@ body {
   text-transform: capitalize;
   border-radius: 6px;
   caret-color: var(--main-color);
-}
-.input:focus {
   outline: none;
 }
 .upcoming-word {
@@ -98,17 +97,17 @@ body {
 }
 .control span {
   font-weight: bold;
-  color: #009688;
+  color: var(--secondary-color);
 }
-.finish {
+.finish-message {
   font-weight: bold;
   font-size: 40px;
   text-align: center;
   padding: 15px;
 }
-.finish .good {
+.finish-message .good {
   color: var(--main-color);
 }
-.finish .bad {
+.finish-message .bad {
   color: red;
 }
