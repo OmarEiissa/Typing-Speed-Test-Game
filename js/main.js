@@ -149,7 +149,35 @@ function startPlay() {
         finishMessage.appendChild(span);
       }
     }
+    updateHighScore()
   }, 1000);
+}
+
+function updateHighScore() {
+  // Get the current score
+  let currentScore = parseInt(scoreGot.innerHTML);
+  
+  // Get the stored highest score from localStorage (or 0 if not set)
+  let highScore = localStorage.getItem("highScore") || 0;
+
+  // If the current score is higher, update the high score
+  if (currentScore > highScore) {
+    localStorage.setItem("highScore", currentScore);
+    highScore = currentScore; // Update the variable with the new high score
+  }
+  displayHighScore(highScore);
+}
+
+function displayHighScore(highScore) {
+  let highScoreElement = document.querySelector(".high-score");
+  if (!highScoreElement) {
+    highScoreElement = document.createElement("div");
+    highScoreElement.className = "high-score";
+    highScoreElement.innerHTML = `Highest Score: <span>${highScore}</span>`;
+    document.querySelector(".container").appendChild(highScoreElement);
+  } else {
+    highScoreElement.querySelector("span").innerHTML = highScore;
+  }
 }
 
 window.onload = function () {
@@ -161,4 +189,7 @@ window.onload = function () {
     secondsSpan.innerHTML = defaultLevelSeconds;
     timeLeftSpan.innerHTML = defaultLevelSeconds;
   }
+
+  displayHighScore(localStorage.getItem("highScore") || 0)
+
 };

@@ -135,3 +135,11 @@ body {
 .finish-message .bad {
   color: red;
 }
+
+.high-score {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+  color: var(--main-color);
+}
