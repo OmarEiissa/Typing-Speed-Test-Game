@@ -11,7 +11,7 @@ body {
   font-family: "OpenSans", sans-serif;
 }
 .game {
-  background-color: #eee;
+  background-color: #e0f7fa;
   min-height: 100vh;
 }
 .container {
@@ -132,7 +132,7 @@ body {
   cursor: pointer;
 }
 .finish-container .finish-btn .bad-finish {
-  background-color: red;
+  background-color: #f44336;
 }
 .finish-container .finish-btn .good-finish {
   background-color: #009688;
@@ -150,7 +150,7 @@ body {
   color: var(--main-color);
 }
 .finish-container .finish-message .bad {
-  color: red;
+  color: #f44336;
 }
 
 .high-score {
