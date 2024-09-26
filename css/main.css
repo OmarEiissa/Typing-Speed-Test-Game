@@ -123,16 +123,33 @@ body {
   font-weight: bold;
   color: var(--secondary-color);
 }
-.finish-message {
+.finish-container .finish-btn div {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  cursor: pointer;
+}
+.finish-container .finish-btn .bad-finish {
+  background-color: red;
+}
+.finish-container .finish-btn .good-finish {
+  background-color: #009688;
+}
+.hidden {
+  display: none;
+}
+.finish-container .finish-message {
   font-weight: bold;
   font-size: 40px;
   text-align: center;
   padding: 15px;
 }
-.finish-message .good {
+.finish-container .finish-message .good {
   color: var(--main-color);
 }
-.finish-message .bad {
+.finish-container .finish-message .bad {
   color: red;
 }
 

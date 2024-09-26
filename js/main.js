@@ -63,7 +63,7 @@ levelSelect.addEventListener("change", function () {
   timeLeftSpan.innerHTML = defaultLevelSeconds;
 
   // Store level in localStorage
-  localStorage.setItem('selectedLevel', defaultLevelName);
+  localStorage.setItem("selectedLevel", defaultLevelName);
 });
 
 // Setting Level Name + Seconds + Score (Initial Setup)
@@ -140,6 +140,16 @@ function startPlay() {
           finishMessage.appendChild(span);
           // Remove Upcoming Word Box
           upcomingWords.remove();
+
+          let GoodFinishBtn = document.querySelector(
+            ".finish-btn .good-finish"
+          );
+
+          GoodFinishBtn.classList.remove("hidden");
+          GoodFinishBtn.addEventListener("click", () => {
+            tryAgain();
+            GoodFinishBtn.classList.add("hidden");
+          });
         }
       } else {
         let span = document.createElement("span");
@@ -147,16 +157,29 @@ function startPlay() {
         let spanText = document.createTextNode("Game Over");
         span.appendChild(spanText);
         finishMessage.appendChild(span);
+
+        let badFinishBtn = document.querySelector(".finish-btn .bad-finish");
+
+        badFinishBtn.classList.remove("hidden");
+        badFinishBtn.addEventListener("click", () => {
+          tryAgain();
+          badFinishBtn.classList.add("hidden");
+        });
       }
     }
-    updateHighScore()
+    updateHighScore();
   }, 1000);
+}
+
+// reset game Function
+function tryAgain() {
+  location.reload();
 }
 
 function updateHighScore() {
   // Get the current score
   let currentScore = parseInt(scoreGot.innerHTML);
-  
+
   // Get the stored highest score from localStorage (or 0 if not set)
   let highScore = localStorage.getItem("highScore") || 0;
 
@@ -181,7 +204,7 @@ function displayHighScore(highScore) {
 }
 
 window.onload = function () {
-  let savedLevel = localStorage.getItem('selectedLevel');
+  let savedLevel = localStorage.getItem("selectedLevel");
   if (savedLevel) {
     defaultLevelName = savedLevel;
     defaultLevelSeconds = lvlS[defaultLevelName];
@@ -190,6 +213,5 @@ window.onload = function () {
     timeLeftSpan.innerHTML = defaultLevelSeconds;
   }
 
-  displayHighScore(localStorage.getItem("highScore") || 0)
-
+  displayHighScore(localStorage.getItem("highScore") || 0);
 };
