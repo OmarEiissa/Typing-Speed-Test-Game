@@ -114,6 +114,7 @@ function genWords() {
 }
 
 function startPlay() {
+  input.value = "";
   timeLeftSpan.innerHTML = defaultLevelSeconds;
   let start = setInterval(() => {
     timeLeftSpan.innerHTML--;
@@ -152,6 +153,16 @@ function startPlay() {
           });
         }
       } else {
+        // change input to readonly and end focus
+        input.value = "";
+        input.setAttribute("readonly", true);
+        input.placeholder = "Game Over";
+        input.style.backgroundColor = "#eee";
+
+        // Remove Upcoming Word Box
+        upcomingWords.remove();
+
+        // Show Finish Message
         let span = document.createElement("span");
         span.className = "bad";
         let spanText = document.createTextNode("Game Over");
